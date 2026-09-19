@@ -1,0 +1,7 @@
+include LICENSE
+include README.md
+include CHANGELOG.md
+recursive-include tests *.py
+recursive-include tests/golden *.json *.xml
+recursive-include tests/rig *.cs *.config
+global-exclude *.pyc *.pyo *.exe *.pdb *.svclog __pycache__

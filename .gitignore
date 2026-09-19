@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.claude/
+
+# Test-rig binaries are rebuilt on demand by tests/conftest.py.
+tests/rig/*.exe
+tests/rig/*.pdb
+
+# Packet captures and golden fixtures may contain hostnames, user names and
+# Kerberos tokens. Commit only fixtures that have been reviewed and scrubbed.
+*.etl
+*.pcap
+*.pcapng
+tests/golden/raw/
+
+# Never let credentials or endpoint config into the repo.
+.env
+*.local.toml
+
+# WCF diagnostic trace produced by tests/rig/DemoService.exe.config
+tests/rig/*.svclog

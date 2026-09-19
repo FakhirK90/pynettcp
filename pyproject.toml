@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pynettcp"
+dynamic = ["version"]
+description = "Native Python client for WCF net.tcp:// services -- no CLR, no proxy DLL"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Fakhir Khan" }]
+maintainers = [{ name = "Fakhir Khan" }]
+keywords = ["wcf", "net.tcp", "NetTcpBinding", "soap", "MC-NMF", "MC-NBFX", "MC-NBFS", "MS-NNS", "dynamics-ax"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: Object Brokering",
+    "Topic :: System :: Networking",
+    "Typing :: Typed",
+]
+
+# No runtime dependency on .NET -- that is the whole point -- and, with
+# pyspnego moved to an extra below, no third-party dependency at all for an
+# unsecured channel or for code generation.
+dependencies = []
+
+[project.optional-dependencies]
+# Windows authentication (SecurityMode.Transport), which most real endpoints
+# need.  Pulls in cryptography, so it is not forced on callers who do not.
+security = ["pyspnego>=0.9"]
+# pythonnet powers the byte-oracle used by the differential tests.  It is a
+# development dependency only -- never required to *use* pynettcp.
+dev = ["pynettcp[security]", "pytest>=7", "pythonnet>=3.0"]
+
+[project.urls]
+Homepage = "https://github.com/CHANGEME/pynettcp"
+Repository = "https://github.com/CHANGEME/pynettcp"
+Issues = "https://github.com/CHANGEME/pynettcp/issues"
+Changelog = "https://github.com/CHANGEME/pynettcp/blob/main/CHANGELOG.md"
+
+[project.scripts]
+pynettcp-gen = "pynettcp.codegen.__main__:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "pynettcp.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["pynettcp*"]
+
+[tool.setuptools.package-data]
+pynettcp = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
