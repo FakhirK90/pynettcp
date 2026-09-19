@@ -8,6 +8,10 @@ venv/
 .pytest_cache/
 .claude/
 
+# Generated client output and ad-hoc scripts in the repo root.
+demo_client.py
+run_real_test.py
+
 # Test-rig binaries are rebuilt on demand by tests/conftest.py.
 tests/rig/*.exe
 tests/rig/*.pdb
