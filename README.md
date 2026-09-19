@@ -1,4 +1,7 @@
 # pynettcp
+[![PyPI version](https://img.shields.io/pypi/v/pynettcp)](https://pypi.org/project/pynettcp/)
+[![Python versions](https://img.shields.io/pypi/pyversions/pynettcp)](https://pypi.org/project/pynettcp/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FakhirK90/pynettcp/blob/main/LICENSE)
 
 A native Python client for WCF `net.tcp://` services. No CLR, no `pythonnet`, no generated C# proxy DLL.
 
